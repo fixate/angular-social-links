@@ -36,19 +36,10 @@
       return {
         restrict: 'ACEM',
         scope: {
-          status: '@status',
-          handle: '@handle'
+          status: '@status'
         },
         link: linker(function(scope, url) {
-          scope.status || (scope.status = (function() {
-            var status;
-            status = "Shared from " + url;
-            if (scope.handle != null) {
-              status += " - via @" + scope.handle;
-            }
-            status += " - " + url;
-            return status;
-          })());
+          scope.status || (scope.status = "Check this out! - " + url);
           return "https://twitter.com/home?status=" + (encodeURIComponent(scope.status));
         })
       };

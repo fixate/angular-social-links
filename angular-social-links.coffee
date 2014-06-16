@@ -34,15 +34,8 @@ angular.module 'socialLinks', []
     restrict: 'ACEM'
     scope:
       status: '@status'
-      handle: '@handle'
     link: linker (scope, url) ->
-      scope.status ||= (->
-        status = "Shared from #{url}"
-        status += " - via @#{scope.handle}" if scope.handle?
-        status += " - #{url}"
-        status
-      )()
-
+      scope.status ||= "Check this out! - #{url}"
       "https://twitter.com/home?status=#{encodeURIComponent(scope.status)}"
   ]
 
