@@ -4,7 +4,7 @@
       return function(urlFactory) {
         return function(scope, element, attrs) {
           var currentUrl, handler, url;
-          currentUrl = $location.url();
+          currentUrl = $location.absUrl();
           url = urlFactory(scope, currentUrl);
           if (element[0].nodeName === 'A' && (attrs.href == null)) {
             element.attr('href', url);
@@ -25,8 +25,9 @@
     'socialLinker', function(linker) {
       return {
         restrict: 'ACEM',
+        scope: true,
         link: linker(function(scope, url) {
-          return "https://facebook.com/sharer.php?u=" + url;
+          return "https://facebook.com/sharer.php?u=" + (encodeURIComponent(url));
         })
       };
     }
@@ -35,8 +36,8 @@
       return {
         restrict: 'ACEM',
         scope: {
-          socialStatus: '@status',
-          socialHandle: '@handle'
+          status: '@status',
+          handle: '@handle'
         },
         link: linker(function(scope, url) {
           scope.status || (scope.status = (function() {
@@ -48,7 +49,7 @@
             status += " - " + url;
             return status;
           })());
-          return "https://twitter.com/home?status=" + scope.status;
+          return "https://twitter.com/home?status=" + (encodeURIComponent(scope.status));
         })
       };
     }
@@ -56,12 +57,9 @@
     'socialLinker', function(linker) {
       return {
         restrict: 'ACEM',
-        scope: {
-          socialStatus: '@status',
-          socialHandle: '@handle'
-        },
+        scope: true,
         link: linker(function(scope, url) {
-          return "https://plus.google.com/share?url=" + url;
+          return "https://plus.google.com/share?url=" + (encodeURIComponent(url));
         })
       };
     }

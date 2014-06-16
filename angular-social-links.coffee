@@ -3,7 +3,7 @@ angular.module 'socialLinks', []
   .factory 'socialLinker', ['$window', '$location', ($window, $location) ->
     (urlFactory) ->
       (scope, element, attrs) ->
-        currentUrl = $location.url()
+        currentUrl = $location.absUrl()
         url = urlFactory(scope, currentUrl)
         if element[0].nodeName == 'A' && !attrs.href?
           element.attr('href', url)
@@ -25,15 +25,16 @@ angular.module 'socialLinks', []
 
   .directive 'socialFacebook', ['socialLinker', (linker) ->
     restrict: 'ACEM'
+    scope: true
     link: linker (scope, url) ->
-      "https://facebook.com/sharer.php?u=#{url}"
+      "https://facebook.com/sharer.php?u=#{encodeURIComponent(url)}"
   ]
 
   .directive 'socialTwitter', ['socialLinker', (linker) ->
     restrict: 'ACEM'
     scope:
-      socialStatus: '@status'
-      socialHandle: '@handle'
+      status: '@status'
+      handle: '@handle'
     link: linker (scope, url) ->
       scope.status ||= (->
         status = "Shared from #{url}"
@@ -42,16 +43,14 @@ angular.module 'socialLinks', []
         status
       )()
 
-      "https://twitter.com/home?status=#{scope.status}"
+      "https://twitter.com/home?status=#{encodeURIComponent(scope.status)}"
   ]
 
   .directive 'socialGoogleplus', ['socialLinker', (linker) ->
     restrict: 'ACEM'
-    scope:
-      socialStatus: '@status'
-      socialHandle: '@handle'
+    scope: true
     link: linker (scope, url) ->
-      "https://plus.google.com/share?url=#{url}"
+      "https://plus.google.com/share?url=#{encodeURIComponent(url)}"
   ]
 
 
