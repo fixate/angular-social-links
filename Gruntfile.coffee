@@ -1,6 +1,12 @@
 module.exports = (grunt) ->
-  grunt.loadNpmTasks('grunt-contrib-coffee')
-  grunt.loadNpmTasks('grunt-contrib-watch')
+
+	pkg = grunt.file.readJSON('package.json')
+
+	dependencies = Object.keys(pkg.devDependencies).filter (o) ->
+		/^grunt-.+/.test(o)
+
+	for dep in dependencies
+		grunt.loadNpmTasks(dep)
 
   grunt.initConfig
     watch:
@@ -20,15 +26,16 @@ module.exports = (grunt) ->
 		bump:
 			options:
 				files: [
-					'package.json'
+					'package.json',
 					'bower.json'
 				]
 				commit: true
 				commitMessage: 'bump version to %VERSION%'
 				commitFiles: [
-					'package.json'
+					'package.json',
 					'bower.json'
 				]
 				createTag: false
+				tagName: '%VERSION%'
 				push: false
 
