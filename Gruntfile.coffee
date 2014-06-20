@@ -16,3 +16,19 @@ module.exports = (grunt) ->
         src: ['angular-social-links.coffee'],
         dest: '.',
         ext: '.js'
+
+		bump:
+			options:
+				files: [
+					'package.json'
+					'bower.json'
+				]
+				commit: true
+				commitMessage: 'bump version to %VERSION%'
+				commitFiles: [
+					'package.json'
+					'bower.json'
+				]
+				createTag: false
+				push: false
+

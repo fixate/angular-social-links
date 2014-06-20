@@ -10,7 +10,9 @@
     "type": "git",
     "url": "git://github.com/fixate/angular-social-links.git"
   },
-  "authors": ["Stan Bondi"],
+  "authors": [
+    "Stan Bondi"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/fixate/angular-social-links/issues"
@@ -20,5 +22,9 @@
     "grunt": "^0.4.5",
     "grunt-contrib-coffee": "^0.10.1",
     "grunt-contrib-watch": "^0.6.1"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-bump": "0.0.14"
   }
 }
