@@ -54,6 +54,39 @@
         })
       };
     }
+  ]).directive('socialPinterest', [
+    'socialLinker', function(linker) {
+      return {
+        restrict: 'ACEM',
+        scope: {
+          media: '@media',
+          description: '@description'
+        },
+        link: linker(function(scope, url) {
+          return "http://pinterest.com/pin/create/button/?url=" + (encodeURIComponent(url)) + "&amp;media=" + (encodeURIComponent(scope.media)) + "&amp;description=" + (encodeURIComponent(scope.description));
+        })
+      };
+    }
+  ]).directive('socialStumbleupon', [
+    'socialLinker', function(linker) {
+      return {
+        restrict: 'ACEM',
+        scope: true,
+        link: linker(function(scope, url) {
+          return "https://stumbleupon.com/submit?url=" + (encodeURIComponent(url));
+        })
+      };
+    }
+  ]).directive('socialLinkedin', [
+    'socialLinker', function(linker) {
+      return {
+        restrict: 'ACEM',
+        scope: true,
+        link: linker(function(scope, url) {
+          return "https://linkedin.com/shareArticle?url=" + (encodeURIComponent(url));
+        })
+      };
+    }
   ]);
 
 }).call(this);
