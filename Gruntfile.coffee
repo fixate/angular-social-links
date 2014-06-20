@@ -8,20 +8,20 @@ module.exports = (grunt) ->
 	for dep in dependencies
 		grunt.loadNpmTasks(dep)
 
-  grunt.initConfig
-    watch:
-      coffee:
-        files: 'angular-social-links.coffee'
-        tasks: ['coffee:compile']
+	grunt.initConfig
+		watch:
+			coffee:
+				files: 'angular-social-links.coffee'
+				tasks: ['coffee:compile']
 
-    coffee:
-      compile:
-        expand: true,
-        flatten: true,
-        cwd: "#{__dirname}/",
-        src: ['angular-social-links.coffee'],
-        dest: '.',
-        ext: '.js'
+		coffee:
+			compile:
+				expand: true,
+				flatten: true,
+				cwd: "#{__dirname}/",
+				src: ['angular-social-links.coffee'],
+				dest: '.',
+				ext: '.js'
 
 		bump:
 			options:
