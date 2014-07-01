@@ -44,7 +44,7 @@
         })
       };
     }
-  ]).directive('socialGoogleplus', [
+  ]).directive('socialGplus', [
     'socialLinker', function(linker) {
       return {
         restrict: 'ACEM',

@@ -39,7 +39,7 @@ angular.module 'socialLinks', []
 			"https://twitter.com/home?status=#{encodeURIComponent(scope.status)}"
 	]
 
-	.directive 'socialGoogleplus', ['socialLinker', (linker) ->
+	.directive 'socialGplus', ['socialLinker', (linker) ->
 		restrict: 'ACEM'
 		scope: true
 		link: linker (scope, url) ->
