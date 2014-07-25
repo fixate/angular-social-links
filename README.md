@@ -20,7 +20,7 @@ angular.module('myApp', ['socialLinks']);
 ```
 
 ```html
-<a share-twitter>share on twitter</a>
+<a social-twitter>share on twitter</a>
 ```
 
 Build
