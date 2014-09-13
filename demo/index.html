@@ -1,12 +1,47 @@
+<!doctype html>
 <html ng-app="myApp">
-<body ng-init="coolWord='shizzlemnah'">
-	<a href="http://facebook.com" social-facebook><strong>Share</strong> on facebook</a><br>
-	<a href="http://twitter.com" social-twitter><strong>Share</strong> on twitter</a><br>
-	<a href="http://twitter.com" social-twitter status="This status is {{ coolWord }}"><strong>Share</strong> with custom status</a><br>
-	<a href="http://plus.google.com" social-gplus><strong>Share</strong> on google plus</a><br>
-	<a href="http://pinterest.com" social-pinterest media="http://lorempixel.com/100/100" description="An awesome description"><strong>Share</strong> on pinterest</a><br>
-	<a href="http://stumbleupon.com" social-stumbleupon><strong>Share</strong> on stumbleupon</a><br>
-	<a href="http://linkedin.com" social-linkedin><strong>Share</strong> on linkedin</a><br>
+<head>
+	<title>Angular Social Links</title>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.3.3/css/foundation.css">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+	<style>
+		body {
+			display: flex;
+			min-height: 100vh;
+			flex-direction: column;
+		}
+
+		.main {
+			flex: 1;
+		}
+	</style>
+</head>
+<body class="text-center" ng-init="coolWord='shizzlemnah'">
+
+	<div class="main">
+		<div class="row">
+			<div class="column">
+				<h1>Angular Social Links</h1>
+
+				<h2>
+					<a class="fa fa-facebook-square" href="/" social-facebook><span class="hide">Share on facebook</span></a>
+					<a class="fa fa-twitter-square" href="/" social-twitter><span class="hide">Share on twitter</span></a>
+					<a class="fa fa-twitter-square" href="/" social-twitter status="This status is {{ coolWord }}"><span class="hide">Share with custom status</span></a>
+					<a class="fa fa-google-plus-square" href="/" social-gplus><span class="hide">Share on google plus</span></a>
+					<a class="fa fa-pinterest-square" href="/" social-pinterest media="http://lorempixel.com/100/100" description="An awesome description"><span class="hide">Share on pinterest</span></a>
+					<a class="fa fa-stumbleupon" href="/" social-stumbleupon><span class="hide">Share on stumbleupon</span></a>
+					<a class="fa fa-linkedin-square" href="/" social-linkedin><span class="hide">Share on linkedin</span></a>
+				</h2>
+
+			</div>
+		</div>
+	</div>
+
+	<footer class="row">
+		<p class="column">
+			A little something from the folks over at <a href="http://fixate.it">Fixate Web and Design</a> | <a href="http://github.com/fixate/angular-social-links">Github repo</a>
+		</p>
+	</footer>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
 	<script src="../angular-social-links.js" type="text/javascript"></script>
