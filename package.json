@@ -1,6 +1,6 @@
 {
   "name": "angular-social-links",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Flexible and easy social sharing directives for Twitter, Google plus and Facebook",
   "main": "angular-social-links.js",
   "scripts": {
