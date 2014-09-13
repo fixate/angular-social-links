@@ -1,7 +1,7 @@
 {
   "name": "angular-social-links",
   "main": "angular-social-links.js",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "homepage": "https://github.com/fixate/angular-social-links",
   "authors": [
     "Stan Bondi <stan@fixate.it>"
@@ -13,6 +13,7 @@
   },
   "ignore": [
     "**/.*",
+		"demo",
     "node_modules",
     "bower_components",
     "test",
