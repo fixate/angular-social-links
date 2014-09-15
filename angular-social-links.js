@@ -3,16 +3,18 @@
     '$window', '$location', function($window, $location) {
       return function(urlFactory) {
         return function(scope, element, attrs) {
-          var currentUrl, handler, url;
-          currentUrl = $location.absUrl();
+          var currentUrl, handler, popupWinAttrs, url;
+          currentUrl = element.attr('href') || $location.absUrl();
           url = urlFactory(scope, currentUrl);
+          popupWinAttrs = "status=no, width=" + (scope.socialWidth || 640) + ", height=" + (scope.socialWidth || 480) + ", resizable=yes, toolbar=no, menubar=no, scrollbars=no, location=no, directories=no";
           if (element[0].nodeName === 'A' && (attrs.href == null)) {
             element.attr('href', url);
-            element.attr('rel', 'nofollow');
           }
+          element.attr('rel', 'nofollow');
           handler = function(e) {
+            var win;
             e.preventDefault();
-            return $window.open(url, 'popupwindow', "scrollbars=yes,width=" + (attrs.socialWidth || 800) + ",height=" + (attrs.socialHeight || 600)).focus();
+            return win = $window.open(url, 'popupwindow', popupWinAttrs).focus();
           };
           element.on('click', handler);
           return scope.$on('$destroy', function() {
@@ -27,7 +29,10 @@
         restrict: 'ACEM',
         scope: true,
         link: linker(function(scope, url) {
-          return "https://facebook.com/sharer.php?u=" + (encodeURIComponent(url));
+          var shareUrl;
+          shareUrl = ["https://facebook.com/sharer.php?"];
+          shareUrl.push("[url]=" + (encodeURIComponent(url)));
+          return shareUrl.join('&p');
         })
       };
     }

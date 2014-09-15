@@ -3,18 +3,32 @@ angular.module 'socialLinks', []
 	.factory 'socialLinker', ['$window', '$location', ($window, $location) ->
 		(urlFactory) ->
 			(scope, element, attrs) ->
-				currentUrl = $location.absUrl()
+				currentUrl = element.attr('href') || $location.absUrl()
 				url = urlFactory(scope, currentUrl)
+
+				popupWinAttrs = "
+					status=no,
+					width=#{scope.socialWidth || 640},
+					height=#{scope.socialWidth || 480},
+					resizable=yes,
+					toolbar=no,
+					menubar=no,
+					scrollbars=no,
+					location=no,
+					directories=no
+				"
+
 				if element[0].nodeName == 'A' && !attrs.href?
 					element.attr('href', url)
-					element.attr('rel', 'nofollow')
+
+				element.attr('rel', 'nofollow')
 
 				handler = (e)->
 					e.preventDefault()
-					$window.open(
+					win = $window.open(
 						url,
 						'popupwindow',
-						"scrollbars=yes,width=#{attrs.socialWidth || 800},height=#{attrs.socialHeight || 600}"
+						popupWinAttrs
 					).focus()
 
 				element.on 'click', handler
@@ -27,7 +41,12 @@ angular.module 'socialLinks', []
 		restrict: 'ACEM'
 		scope: true
 		link: linker (scope, url) ->
-			"https://facebook.com/sharer.php?u=#{encodeURIComponent(url)}"
+			# who knows what implementation of FB sharing actually works anymore
+			# http://tomyates.co.uk/2014/01/17/customising-facebook-sharer/
+			shareUrl = ["https://facebook.com/sharer.php?"]
+			shareUrl.push("[url]=#{encodeURIComponent(url)}")
+
+			shareUrl.join('&p')
 	]
 
 	.directive 'socialTwitter', ['socialLinker', (linker) ->
