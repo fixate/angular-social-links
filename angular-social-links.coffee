@@ -3,7 +3,7 @@ angular.module 'socialLinks', []
 	.factory 'socialLinker', ['$window', '$location', ($window, $location) ->
 		(urlFactory) ->
 			(scope, element, attrs) ->
-				currentUrl = element.attr('href') || $location.absUrl()
+				currentUrl = attrs.customUrl || $location.absUrl()
 				url = urlFactory(scope, currentUrl)
 
 				popupWinAttrs = "
