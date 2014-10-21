@@ -18,7 +18,7 @@ angular.module 'socialLinks', []
 					directories=no
 				"
 
-				if element[0].nodeName == 'A' && !attrs.href?
+				if element[0].nodeName == 'A' && (!attrs.href? || attrs.href == '')
 					element.attr('href', url)
 
 				element.attr('rel', 'nofollow')
