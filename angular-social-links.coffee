@@ -3,7 +3,7 @@ angular.module 'socialLinks', []
 	.factory 'socialLinker', ['$window', '$location', ($window, $location) ->
 		(urlFactory) ->
 			(scope, element, attrs) ->
-				currentUrl = element.attr('href') || $location.absUrl()
+				currentUrl = attrs.customUrl || $location.absUrl()
 				url = urlFactory(scope, currentUrl)
 
 				popupWinAttrs = "
@@ -18,7 +18,7 @@ angular.module 'socialLinks', []
 					directories=no
 				"
 
-				if element[0].nodeName == 'A' && !attrs.href?
+				if element[0].nodeName == 'A' && (!attrs.href? || attrs.href == '')
 					element.attr('href', url)
 
 				element.attr('rel', 'nofollow')
@@ -41,7 +41,6 @@ angular.module 'socialLinks', []
 		restrict: 'ACEM'
 		scope: true
 		link: linker (scope, url) ->
-			# who knows what implementation of FB sharing actually works anymore
 			# http://tomyates.co.uk/2014/01/17/customising-facebook-sharer/
 			shareUrl = ["https://facebook.com/sharer.php?"]
 			shareUrl.push("[url]=#{encodeURIComponent(url)}")
