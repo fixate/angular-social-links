@@ -41,7 +41,6 @@ angular.module 'socialLinks', []
 		restrict: 'ACEM'
 		scope: true
 		link: linker (scope, url) ->
-			# who knows what implementation of FB sharing actually works anymore
 			# http://tomyates.co.uk/2014/01/17/customising-facebook-sharer/
 			shareUrl = ["https://facebook.com/sharer.php?"]
 			shareUrl.push("[url]=#{encodeURIComponent(url)}")
