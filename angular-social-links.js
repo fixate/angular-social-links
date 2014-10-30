@@ -45,7 +45,7 @@
         },
         link: linker(function(scope, url) {
           scope.status || (scope.status = "Check this out! - " + url);
-          return "https://twitter.com/home?status=" + (encodeURIComponent(scope.status));
+          return "https://twitter.com/intent/tweet?text=" + (encodeURIComponent(scope.status));
         })
       };
     }
