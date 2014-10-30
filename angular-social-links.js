@@ -31,7 +31,7 @@
         link: linker(function(scope, url) {
           var shareUrl;
           shareUrl = ["https://facebook.com/sharer/sharer.php?"];
-          shareUrl.push("[u]=" + (encodeURIComponent(url)));
+          shareUrl.push("u=" + (encodeURIComponent(url)));
           return shareUrl.join('&p');
         })
       };
@@ -45,7 +45,7 @@
         },
         link: linker(function(scope, url) {
           scope.status || (scope.status = "Check this out! - " + url);
-          return "https://twitter.com/compose?status=" + (encodeURIComponent(scope.status));
+          return "https://twitter.com/home?status=" + (encodeURIComponent(scope.status));
         })
       };
     }

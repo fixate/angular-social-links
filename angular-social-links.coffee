@@ -43,7 +43,7 @@ angular.module 'socialLinks', []
 		link: linker (scope, url) ->
 			# http://tomyates.co.uk/2014/01/17/customising-facebook-sharer/
 			shareUrl = ["https://facebook.com/sharer/sharer.php?"]
-			shareUrl.push("[u]=#{encodeURIComponent(url)}")
+			shareUrl.push("u=#{encodeURIComponent(url)}")
 
 			shareUrl.join('&p')
 	]
@@ -54,7 +54,7 @@ angular.module 'socialLinks', []
 			status: '@status'
 		link: linker (scope, url) ->
 			scope.status ||= "Check this out! - #{url}"
-			"https://twitter.com/compose?status=#{encodeURIComponent(scope.status)}"
+			"https://twitter.com/home?status=#{encodeURIComponent(scope.status)}"
 	]
 
 	.directive 'socialGplus', ['socialLinker', (linker) ->
