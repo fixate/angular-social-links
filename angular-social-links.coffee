@@ -54,7 +54,7 @@ angular.module 'socialLinks', []
 			status: '@status'
 		link: linker (scope, url) ->
 			scope.status ||= "Check this out! - #{url}"
-			"https://twitter.com/home?status=#{encodeURIComponent(scope.status)}"
+			"https://twitter.com/compose?status=#{encodeURIComponent(scope.status)}"
 	]
 
 	.directive 'socialGplus', ['socialLinker', (linker) ->
