@@ -32,7 +32,7 @@
           var shareUrl;
           shareUrl = ["https://facebook.com/sharer.php?"];
           shareUrl.push("[url]=" + (encodeURIComponent(url)));
-          return shareUrl.join('&p');
+          return shareUrl.join('');
         })
       };
     }

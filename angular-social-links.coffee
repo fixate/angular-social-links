@@ -45,7 +45,7 @@ angular.module 'socialLinks', []
 			shareUrl = ["https://facebook.com/sharer.php?"]
 			shareUrl.push("[url]=#{encodeURIComponent(url)}")
 
-			shareUrl.join('&p')
+			shareUrl.join('')
 	]
 
 	.directive 'socialTwitter', ['socialLinker', (linker) ->
