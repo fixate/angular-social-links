@@ -43,7 +43,7 @@ angular.module 'socialLinks', []
 		link: linker (scope, url) ->
 			# http://tomyates.co.uk/2014/01/17/customising-facebook-sharer/
 			shareUrl = ["https://facebook.com/sharer.php?"]
-			shareUrl.push("[url]=#{encodeURIComponent(url)}")
+			shareUrl.push("[u]=#{encodeURIComponent(url)}")
 
 			shareUrl.join('&p')
 	]
