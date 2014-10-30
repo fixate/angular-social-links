@@ -30,8 +30,8 @@
         scope: true,
         link: linker(function(scope, url) {
           var shareUrl;
-          shareUrl = ["https://facebook.com/sharer.php?"];
-          shareUrl.push("[url]=" + (encodeURIComponent(url)));
+          shareUrl = ["https://facebook.com/sharer/sharer.php?"];
+          shareUrl.push("[u]=" + (encodeURIComponent(url)));
           return shareUrl.join('&p');
         })
       };
