@@ -92,6 +92,16 @@
         })
       };
     }
+  ]).directive('socialReddit', [
+    'socialLinker', function(linker) {
+      return {
+        restrict: 'ACEM',
+        scope: true,
+        link: linker(function(scope, url) {
+          return "https://www.reddit.com/submit?url=" + (encodeURIComponent(url));
+        })
+      };
+    }
   ]);
 
 }).call(this);
