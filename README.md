@@ -1,7 +1,6 @@
 # Angular Social Sharing Links
 
-Flexible and easy social sharing directives for Twitter, Google Plus, Facebook,
-Pinterest, LinkedIn, and Reddit
+Flexible and easy social sharing directives for Twitter, Google Plus, Facebook, Pinterest, StumbleUpon, LinkedIn, and Reddit.
 
 ## Installation
 
@@ -17,17 +16,16 @@ bower install angular-social-links
 angular.module('myApp', ['socialLinks']);
 ```
 
-Angular social links will automatically use the absolute URL of the current
-page.
+Angular social links will automatically use the absolute URL of the current page.
 
 ```html
 <a social-twitter>share on twitter</a>
 <a social-twitter status="My custom status">share on twitter</a>
-
 <a social-facebook>share on facebook</a>
 <a social-gplus>share on google plus</a>
-<a social-pinterest>share on pinterest</a>
+<a social-pinterest media="http://lorempixel.com/100/100/nature/1">share on pinterest</a>
 <a social-linkedin>share on linkedin</a>
+<a social-stumbleupon>share on stumbleupon</a>
 <a social-reddit>share on reddit</a>
 ```
 
@@ -37,8 +35,9 @@ page.
 <a social-twitter custom-url="http://google.com">share on twitter</a>
 <a social-facebook custom-url="http://google.com">share on facebook</a>
 <a social-gplus custom-url="http://google.com">share on google plus</a>
-<a social-pinterest custom-url="http://google.com">share on pinterest</a>
+<a social-pinterest media="http://lorempixel.com/100/100/nature/1" custom-url="http://google.com">share on pinterest</a>
 <a social-linkedin custom-url="http://google.com">share on linkedin</a>
+<a social-stumbleupon custom-url="http://google.com">share on stumbleupon</a>
 <a social-reddit custom-url="http://google.com">share on reddit</a>
 ```
 
