@@ -1,6 +1,6 @@
 {
   "name": "angular-social-links",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Flexible and easy social sharing directives for Twitter, Google plus and Facebook",
   "main": "angular-social-links.js",
   "scripts": {
@@ -11,7 +11,8 @@
     "url": "git://github.com/fixate/angular-social-links.git"
   },
   "authors": [
-    "Stan Bondi"
+    "Stan Bondi",
+		"Larry Botha"
   ],
   "license": "MIT",
   "bugs": {
