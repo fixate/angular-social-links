@@ -16,7 +16,7 @@ bower install angular-social-links
 angular.module('myApp', ['socialLinks']);
 ```
 
-Angular social links will automatically use the absolute URL of the current page.
+Angular social links will automatically use the absolute URL of the current page:
 
 ```html
 <a social-twitter>share on twitter</a>
@@ -29,7 +29,7 @@ Angular social links will automatically use the absolute URL of the current page
 <a social-reddit>share on reddit</a>
 ```
 
-### With Custom Urls
+but you can define custom URLs too:
 
 ```html
 <a social-twitter custom-url="http://google.com">share on twitter</a>
