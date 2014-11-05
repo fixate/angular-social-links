@@ -86,4 +86,11 @@ angular.module 'socialLinks', []
 			"https://linkedin.com/shareArticle?url=#{encodeURIComponent(url)}"
 	]
 
+	.directive 'socialReddit', ['socialLinker', (linker) ->
+		restrict: 'ACEM'
+		scope: true
+		link: linker (scope, url) ->
+			"https://www.reddit.com/submit?url=#{encodeURIComponent(url)}"
+	]
+
 
