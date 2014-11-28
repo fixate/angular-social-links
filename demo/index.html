@@ -31,7 +31,7 @@
 						<a class="fa fa-twitter-square" href="" social-twitter><span class="hide">Share on twitter</span></a>
 						<a class="fa fa-twitter-square" href="" social-twitter status="This status is {{ demo.coolWord }}"><span class="hide">Share with custom status</span></a>
 						<a class="fa fa-google-plus-square" href="" social-gplus><span class="hide">Share on google plus</span></a>
-						<a class="fa fa-pinterest-square" href="" social-pinterest media="http://lorempixel.com/100/100/nature/1" description="An awesome description"><span class="hide">Share on pinterest</span></a>
+						<a class="fa fa-pinterest-square" href="" social-pinterest media="{{ demo.pinterestMediaUrl }}" description="An awesome description"><span class="hide">Share on pinterest</span></a>
 						<a class="fa fa-stumbleupon" href="" social-stumbleupon><span class="hide">Share on stumbleupon</span></a>
 						<a class="fa fa-linkedin-square" href="" social-linkedin><span class="hide">Share on linkedin</span></a>
 						<a class="fa fa-reddit-square" href="" social-reddit><span class="hide">Share on reddit</span></a>
@@ -66,9 +66,12 @@
 	<script src="../angular-social-links.js" type="text/javascript"></script>
 	<script>
 		angular.module('myApp', ['socialLinks'])
-			.controller('DemoCtrl', function() {
-				this.coolWord = 'shizzlemnah';
-				this.pinterestMediaUrl = 'http://lorempixel.com/100/100/nature/1';
+			.controller('DemoCtrl', function($timeout) {
+				self = this;
+				self.coolWord = 'shizzlemnah';
+				$timeout(function() {
+					self.pinterestMediaUrl = 'http://lorempixel.com/100/100/nature/1';
+				}, 1000)
 			})
 	</script>
 </body>
