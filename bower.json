@@ -9,7 +9,7 @@
   "description": "Flexible and easy social sharing directives for Twitter, Google plus and Facebook",
   "license": "MIT",
   "dependencies": {
-    "angular": "~1.2"
+    "angular": "~1.x"
   },
   "ignore": [
     "**/.*",
