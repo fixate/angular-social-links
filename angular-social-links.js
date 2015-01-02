@@ -45,7 +45,7 @@
           status: '@status'
         },
         link: linker(function(scope, url) {
-          scope.status || (scope.status = "Check this out! - " + url);
+          scope.status = "Check this out! - " + url;
           return "https://twitter.com/intent/tweet?text=" + (encodeURIComponent(scope.status));
         })
       };
