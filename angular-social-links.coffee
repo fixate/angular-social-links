@@ -25,6 +25,7 @@ angular.module 'socialLinks', []
 
 				handler = (e)->
 					e.preventDefault()
+					url = urlFactory(scope, currentUrl)
 					win = $window.open(
 						url,
 						'popupwindow',
