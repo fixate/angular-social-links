@@ -14,6 +14,7 @@
           handler = function(e) {
             var win;
             e.preventDefault();
+            url = urlFactory(scope, currentUrl);
             return win = $window.open(url, 'popupwindow', popupWinAttrs).focus();
           };
           element.on('click', handler);
