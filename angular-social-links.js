@@ -103,6 +103,16 @@
         })
       };
     }
+  ]).directive('socialVk', [
+    'socialLinker', function(linker) {
+      return {
+        restrict: 'ACEM',
+        scope: true,
+        link: linker(function(scope, url) {
+          return "http://vkontakte.ru/share.php?url=" + (encodeURIComponent(url));
+        })
+      };
+    }
   ]);
 
 }).call(this);
