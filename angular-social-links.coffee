@@ -94,4 +94,11 @@ angular.module 'socialLinks', []
 			"https://www.reddit.com/submit?url=#{encodeURIComponent(url)}"
 	]
 
+	.directive 'socialVk', ['socialLinker', (linker) ->
+		restrict: 'ACEM',
+		scope: true,
+		link: linker (scope, url) ->
+			"http://vkontakte.ru/share.php?url=#{encodeURIComponent(url)}"
+	]
+
 
