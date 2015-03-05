@@ -1,7 +1,7 @@
 {
   "name": "angular-social-links",
   "main": "angular-social-links.js",
-  "version": "0.0.11",
+  "version": "0.0.13",
   "homepage": "https://github.com/fixate/angular-social-links",
   "authors": [
     "Stan Bondi <stan@fixate.it>"
@@ -9,7 +9,7 @@
   "description": "Flexible and easy social sharing directives for Twitter, Google plus and Facebook",
   "license": "MIT",
   "dependencies": {
-    "angular": "~1.2"
+    "angular": "~1.x"
   },
   "ignore": [
     "**/.*",
