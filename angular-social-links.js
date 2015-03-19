@@ -113,6 +113,16 @@
         })
       };
     }
+  ]).directive('socialOk', [
+    'socialLinker', function(linker) {
+      return {
+        restrict: 'ACEM',
+        scope: true,
+        link: linker(function(scope, url) {
+          return "http://www.odnoklassniki.ru/dk?st.cmd=addShare&st._surl=" + (encodeURIComponent(url));
+        })
+      };
+    }
   ]);
 
 }).call(this);
