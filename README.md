@@ -28,6 +28,7 @@ Angular social links will automatically use the absolute URL of the current page
 <a social-stumbleupon>share on stumbleupon</a>
 <a social-reddit>share on reddit</a>
 <a social-vk>share on vk.com</a>
+<a social-ok>share on ok.ru</a>
 ```
 
 but you can define custom URLs too:
@@ -41,6 +42,7 @@ but you can define custom URLs too:
 <a social-stumbleupon custom-url="http://google.com">share on stumbleupon</a>
 <a social-reddit custom-url="http://google.com">share on reddit</a>
 <a social-vk custom-url="http://google.com">share on vk.com</a>
+<a social-ok custom-url="http://google.com">share on ok.ru</a>
 ```
 
 ## Build
