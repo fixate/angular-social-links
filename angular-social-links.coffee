@@ -101,4 +101,9 @@ angular.module 'socialLinks', []
 			"http://vkontakte.ru/share.php?url=#{encodeURIComponent(url)}"
 	]
 
-
+	.directive 'socialOk', ['socialLinker', (linker) ->
+		restrict: 'ACEM',
+		scope: true,
+		link: linker (scope, url) ->
+			"http://www.odnoklassniki.ru/dk?st.cmd=addShare&st._surl=#{encodeURIComponent(url)}"
+	]
