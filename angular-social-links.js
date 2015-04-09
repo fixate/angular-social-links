@@ -1,4 +1,10 @@
 (function() {
+  var sharedScopeDefinition;
+
+  sharedScopeDefinition = {
+    handler: '&customHandler'
+  };
+
   angular.module('socialLinks', []).factory('socialLinker', [
     '$window', '$location', function($window, $location) {
       return function(urlFactory) {
@@ -17,7 +23,17 @@
             url = urlFactory(scope, currentUrl);
             return win = $window.open(url, 'popupwindow', popupWinAttrs).focus();
           };
-          element.on('click', handler);
+          if (attrs.customHandler != null) {
+            element.on('click', handler = function(event) {
+              url = urlFactory(scope, currentUrl);
+              return scope.handler({
+                $event: event,
+                $url: url
+              });
+            });
+          } else {
+            element.on('click', handler);
+          }
           return scope.$on('$destroy', function() {
             return element.off('click', handler);
           });
@@ -28,7 +44,7 @@
     'socialLinker', function(linker) {
       return {
         restrict: 'ACEM',
-        scope: true,
+        scope: sharedScopeDefinition,
         link: linker(function(scope, url) {
           var shareUrl;
           shareUrl = ["https://facebook.com/sharer.php?"];
@@ -41,9 +57,9 @@
     'socialLinker', function(linker) {
       return {
         restrict: 'ACEM',
-        scope: {
+        scope: angular.extend({
           status: '@status'
-        },
+        }, sharedScopeDefinition),
         link: linker(function(scope, url) {
           scope.status || (scope.status = "Check this out! - " + url);
           return "https://twitter.com/intent/tweet?text=" + (encodeURIComponent(scope.status));
@@ -54,7 +70,7 @@
     'socialLinker', function(linker) {
       return {
         restrict: 'ACEM',
-        scope: true,
+        scope: sharedScopeDefinition,
         link: linker(function(scope, url) {
           return "https://plus.google.com/share?url=" + (encodeURIComponent(url));
         })
@@ -64,10 +80,10 @@
     'socialLinker', function(linker) {
       return {
         restrict: 'ACEM',
-        scope: {
+        scope: angular.extend({
           media: '@media',
           description: '@description'
-        },
+        }, sharedScopeDefinition),
         link: linker(function(scope, url) {
           return "http://pinterest.com/pin/create/button/?url=" + (encodeURIComponent(url)) + "&amp;media=" + (encodeURIComponent(scope.media)) + "&amp;description=" + (encodeURIComponent(scope.description));
         })
@@ -77,7 +93,7 @@
     'socialLinker', function(linker) {
       return {
         restrict: 'ACEM',
-        scope: true,
+        scope: sharedScopeDefinition,
         link: linker(function(scope, url) {
           return "https://stumbleupon.com/submit?url=" + (encodeURIComponent(url));
         })
@@ -87,7 +103,7 @@
     'socialLinker', function(linker) {
       return {
         restrict: 'ACEM',
-        scope: true,
+        scope: sharedScopeDefinition,
         link: linker(function(scope, url) {
           return "https://linkedin.com/shareArticle?url=" + (encodeURIComponent(url));
         })
@@ -97,7 +113,7 @@
     'socialLinker', function(linker) {
       return {
         restrict: 'ACEM',
-        scope: true,
+        scope: sharedScopeDefinition,
         link: linker(function(scope, url) {
           return "https://www.reddit.com/submit?url=" + (encodeURIComponent(url));
         })
@@ -107,7 +123,7 @@
     'socialLinker', function(linker) {
       return {
         restrict: 'ACEM',
-        scope: true,
+        scope: sharedScopeDefinition,
         link: linker(function(scope, url) {
           return "http://vkontakte.ru/share.php?url=" + (encodeURIComponent(url));
         })
@@ -117,7 +133,7 @@
     'socialLinker', function(linker) {
       return {
         restrict: 'ACEM',
-        scope: true,
+        scope: sharedScopeDefinition,
         link: linker(function(scope, url) {
           return "http://www.odnoklassniki.ru/dk?st.cmd=addShare&st._surl=" + (encodeURIComponent(url));
         })
