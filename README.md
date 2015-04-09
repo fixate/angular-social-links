@@ -45,6 +45,14 @@ but you can define custom URLs too:
 <a social-ok custom-url="http://google.com">share on ok.ru</a>
 ```
 
+and custom click handlers for all directives:
+```html
+<a social-twitter custom-handler="$event.preventDefault();controller.doSomething($url)">share on twitter</a>
+```
+
+You can use `$event` (click event object) and `$url` (the share link url).
+This will prevent the popup window from coming up. If you don't use `$event.preventDefault`, the link will navigate as usual.
+
 ## Build
 
 ```shell

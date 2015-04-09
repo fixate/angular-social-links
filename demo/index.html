@@ -29,7 +29,7 @@
 					<h2>
 						<a class="fa fa-facebook-square" href="" social-facebook><span class="hide">Share on facebook</span></a>
 						<a class="fa fa-twitter-square" href="" social-twitter><span class="hide">Share on twitter</span></a>
-						<a class="fa fa-twitter-square" href="" social-twitter status="This status is {{ demo.coolWord }}"><span class="hide">Share with custom status</span></a>
+						<a class="fa fa-twitter-square" href="" social-twitter status="This status is #{{ demo.coolWord }}"><span class="hide">Share with custom status</span></a>
 						<a class="fa fa-google-plus-square" href="" social-gplus><span class="hide">Share on google plus</span></a>
 						<a class="fa fa-pinterest-square" href="" social-pinterest media="{{ demo.pinterestMediaUrl }}" description="An awesome description"><span class="hide">Share on pinterest</span></a>
 						<a class="fa fa-stumbleupon" href="" social-stumbleupon><span class="hide">Share on stumbleupon</span></a>
@@ -44,7 +44,7 @@
 				  <h2>
 						<a class="fa fa-facebook-square" href="" custom-url="http://google.com" social-facebook><span class="hide">Share on facebook</span></a>
 						<a class="fa fa-twitter-square" href="" custom-url="http://google.com" social-twitter><span class="hide">Share on twitter</span></a>
-						<a class="fa fa-twitter-square" href="" custom-url="http://google.com" social-twitter status="This status is {{ demo.coolWord }}"><span class="hide">Share with custom status</span></a>
+						<a class="fa fa-twitter-square" href="" custom-url="http://google.com" social-twitter status="This status is #{{ demo.coolWord }}"><span class="hide">Share with custom status</span></a>
 						<a class="fa fa-google-plus-square" href="" custom-url="http://google.com" social-gplus><span class="hide">Share on google plus</span></a>
 						<a class="fa fa-pinterest-square" href="" custom-url="http://google.com" social-pinterest media="{{ pinterestMediaUrl }}" description="An awesome description"><span class="hide">Share on pinterest</span></a>
 						<a class="fa fa-stumbleupon" href="" custom-url="http://google.com" social-stumbleupon><span class="hide">Share on stumbleupon</span></a>
@@ -54,13 +54,22 @@
 				  </h2>
 				</div>
 
+
+				<h2>With Custom Handlers</h2>
+				<div class="panel">
+				  <h2>
+						<a class="fa fa-facebook-square" title="This il show an alert." href="" social-facebook custom-handler="$event.preventDefault();demo.alert('Url is:' + $url)"><span class="hide">Share on facebook</span></a>
+						<a class="fa fa-twitter-square" title="This will navigate in this window" href="" social-twitter custom-handler="true"><span class="hide">Share on twitter</span></a>
+				  </h2>
+				</div>
+
 			</div>
 		</div>
 	</div>
 
 	<footer class="row">
 		<p class="column">
-			A little something from the folks over at <a href="http://fixate.it">Fixate Web and Design</a> | <a href="http://github.com/fixate/angular-social-links">Github repo</a>
+			A little something from the folks over at <a href="http://fixate.it">Fixate Web and Design</a> | <a href="https://github.com/fixate/angular-social-links">Github repo</a>
 		</p>
 	</footer>
 
@@ -69,11 +78,14 @@
 	<script>
 		angular.module('myApp', ['socialLinks'])
 			.controller('DemoCtrl', function($timeout) {
-				self = this;
-				self.coolWord = 'shizzlemnah';
+				me = this;
+				me.coolWord = 'shizzlemnah';
+				me.alert = function(message) {
+					window.alert(message);
+				};
 				$timeout(function() {
-					self.pinterestMediaUrl = 'http://lorempixel.com/100/100/nature/1';
-				}, 1000)
+					me.pinterestMediaUrl = 'http://lorempixel.com/100/100/nature/1';
+				}, 1000);
 			})
 	</script>
 </body>
