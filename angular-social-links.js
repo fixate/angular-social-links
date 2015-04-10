@@ -9,15 +9,14 @@
     '$window', '$location', function($window, $location) {
       return function(urlFactory) {
         return function(scope, element, attrs) {
-          var currentUrl, handler, popupWinAttrs, url;
-          currentUrl = attrs.customUrl || $location.absUrl();
-          url = urlFactory(scope, currentUrl);
-          popupWinAttrs = "status=no, width=" + (scope.socialWidth || 640) + ", height=" + (scope.socialWidth || 480) + ", resizable=yes, toolbar=no, menubar=no, scrollbars=no, location=no, directories=no";
-          if (element[0].nodeName === 'A' && ((attrs.href == null) || attrs.href === '')) {
-            element.attr('href', url);
-          }
-          element.attr('rel', 'nofollow');
-          handler = function(e) {
+          var handler = function(e) {
+		    var currentUrl = attrs.customUrl || $location.absUrl();
+            var url = urlFactory(scope, currentUrl);
+            var popupWinAttrs = "status=no, width=" + (scope.socialWidth || 640) + ", height=" + (scope.socialWidth || 480) + ", resizable=yes, toolbar=no, menubar=no, scrollbars=no, location=no, directories=no";
+            if (element[0].nodeName === 'A' && ((attrs.href == null) || attrs.href === '')) {
+              element.attr('href', url);
+            }
+            element.attr('rel', 'nofollow');
             var win;
             e.preventDefault();
             url = urlFactory(scope, currentUrl);
@@ -61,7 +60,7 @@
           status: '@status'
         }, sharedScopeDefinition),
         link: linker(function(scope, url) {
-          scope.status || (scope.status = "Check this out! - " + url);
+          scope.status = "Check this out! - " + url;
           return "https://twitter.com/intent/tweet?text=" + (encodeURIComponent(scope.status));
         })
       };
