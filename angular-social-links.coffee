@@ -1,5 +1,6 @@
-sharedScopeDefinition =
+sharedScopeDefinition = {
 	handler: '&customHandler'
+}
 
 angular.module 'socialLinks', []
 
@@ -22,7 +23,7 @@ angular.module 'socialLinks', []
 					attrs.customUrl or $location.absUrl()
 
 				attrs.$observe 'customUrl', () ->
-					url = urlFactory scope, getCurrentUrl()
+					url = urlFactory(scope, getCurrentUrl())
 
 					if element[0].nodeName is 'A' and (!attrs.href? or attrs.href is '')
 						element.attr 'href', url
@@ -40,7 +41,7 @@ angular.module 'socialLinks', []
 
 				if attrs.customHandler?
 					element.on 'click', handler = (event) ->
-						url = urlFactory scope, getCurrentUrl()
+						url = urlFactory(scope, getCurrentUrl())
 						scope.handler($event: event, $url: url)
 				else
 					element.on 'click', handler
