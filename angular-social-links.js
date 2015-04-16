@@ -31,7 +31,7 @@
           if (attrs.customHandler != null) {
             element.on('click', handler = function(event) {
               var url;
-              url = urlFactory(scope, currentUrl);
+              url = urlFactory(scope, getCurrentUrl());
               return scope.handler({
                 $event: event,
                 $url: url

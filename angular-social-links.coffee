@@ -40,7 +40,7 @@ angular.module 'socialLinks', []
 
 				if attrs.customHandler?
 					element.on 'click', handler = (event) ->
-						url = urlFactory(scope, currentUrl)
+						url = urlFactory scope, getCurrentUrl()
 						scope.handler($event: event, $url: url)
 				else
 					element.on 'click', handler
