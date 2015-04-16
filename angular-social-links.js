@@ -9,23 +9,29 @@
     '$window', '$location', function($window, $location) {
       return function(urlFactory) {
         return function(scope, element, attrs) {
-          var currentUrl, handler, popupWinAttrs, url;
-          currentUrl = attrs.customUrl || $location.absUrl();
-          url = urlFactory(scope, currentUrl);
+          var getCurrentUrl, handler, popupWinAttrs;
           popupWinAttrs = "status=no, width=" + (scope.socialWidth || 640) + ", height=" + (scope.socialWidth || 480) + ", resizable=yes, toolbar=no, menubar=no, scrollbars=no, location=no, directories=no";
-          if (element[0].nodeName === 'A' && ((attrs.href == null) || attrs.href === '')) {
-            element.attr('href', url);
-          }
+          getCurrentUrl = function() {
+            return attrs.customUrl || $location.absUrl();
+          };
+          attrs.$observe('customUrl', function() {
+            var url;
+            url = urlFactory(scope, getCurrentUrl());
+            if (element[0].nodeName === 'A' && ((attrs.href == null) || attrs.href === '')) {
+              return element.attr('href', url);
+            }
+          });
           element.attr('rel', 'nofollow');
           handler = function(e) {
-            var win;
+            var url, win;
             e.preventDefault();
             url = urlFactory(scope, currentUrl);
             return win = $window.open(url, 'popupwindow', popupWinAttrs).focus();
           };
           if (attrs.customHandler != null) {
             element.on('click', handler = function(event) {
-              url = urlFactory(scope, currentUrl);
+              var url;
+              url = urlFactory(scope, getCurrentUrl());
               return scope.handler({
                 $event: event,
                 $url: url
