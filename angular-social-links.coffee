@@ -1,15 +1,11 @@
-sharedScopeDefinition = {
+sharedScopeDefinition =
 	handler: '&customHandler'
-}
 
 angular.module 'socialLinks', []
 
 	.factory 'socialLinker', ['$window', '$location', ($window, $location) ->
 		(urlFactory) ->
 			(scope, element, attrs) ->
-				currentUrl = attrs.customUrl || $location.absUrl()
-				url = urlFactory(scope, currentUrl)
-
 				popupWinAttrs = "
 					status=no,
 					width=#{scope.socialWidth || 640},
@@ -22,10 +18,16 @@ angular.module 'socialLinks', []
 					directories=no
 				"
 
-				if element[0].nodeName == 'A' && (!attrs.href? || attrs.href == '')
-					element.attr('href', url)
+				getCurrentUrl = () ->
+					attrs.customUrl or $location.absUrl()
 
-				element.attr('rel', 'nofollow')
+				attrs.$observe 'customUrl', () ->
+					url = urlFactory scope, getCurrentUrl()
+
+					if element[0].nodeName is 'A' and (!attrs.href? or attrs.href is '')
+						element.attr 'href', url
+
+				element.attr 'rel', 'nofollow'
 
 				handler = (e)->
 					e.preventDefault()
