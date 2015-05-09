@@ -123,6 +123,16 @@
         })
       };
     }
+  ]).directive('socialXing', [
+    'socialLinker', function(linker) {
+      return {
+        restrict: 'ACEM',
+        scope: true,
+        link: linker(function(scope, url) {
+          return "https://www.xing.com/spi/shares/new?url=" + (encodeURIComponent(url));
+        })
+      };
+    }
   ]);
 
 }).call(this);
