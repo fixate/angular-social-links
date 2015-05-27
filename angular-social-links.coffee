@@ -32,7 +32,7 @@ angular.module 'socialLinks', []
 
 				handler = (e)->
 					e.preventDefault()
-					url = urlFactory(scope, currentUrl)
+					url = urlFactory(scope, getCurrentUrl())
 					win = $window.open(
 						url,
 						'popupwindow',

@@ -25,7 +25,7 @@
           handler = function(e) {
             var url, win;
             e.preventDefault();
-            url = urlFactory(scope, currentUrl);
+            url = urlFactory(scope, getCurrentUrl());
             return win = $window.open(url, 'popupwindow', popupWinAttrs).focus();
           };
           if (attrs.customHandler != null) {
