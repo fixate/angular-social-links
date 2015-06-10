@@ -155,6 +155,16 @@
         })
       };
     }
+  ]).directive('socialMm', [
+    'socialLinker', function(linker) {
+      return {
+        restrict: 'ACEM',
+        scope: sharedScopeDefinition,
+        link: linker(function(scope, url) {
+          return "http://connect.mail.ru/share?share_url=" + (encodeURIComponent(url));
+        })
+      };
+    }
   ]);
 
 }).call(this);

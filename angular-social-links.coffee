@@ -116,10 +116,16 @@ angular.module 'socialLinks', []
 		link: linker (scope, url) ->
 			"http://www.odnoklassniki.ru/dk?st.cmd=addShare&st._surl=#{encodeURIComponent(url)}"
 	]
-	
+
 	.directive 'socialXing', ['socialLinker', (linker) ->
 		restrict: 'ACEM',
 		scope: sharedScopeDefinition,
 		link: linker (scope, url) ->
 			"https://www.xing.com/spi/shares/new?url=#{encodeURIComponent(url)}"
+	]
+	.directive 'socialMm', ['socialLinker', (linker) ->
+		restrict: 'ACEM',
+		scope: sharedScopeDefinition,
+		link: linker (scope, url) ->
+			"http://connect.mail.ru/share?share_url=#{encodeURIComponent(url)}"
 	]
