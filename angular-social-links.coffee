@@ -42,7 +42,7 @@ angular.module 'socialLinks', []
 				if attrs.customHandler?
 					element.on 'click', handler = (event) ->
 						url = urlFactory(scope, getCurrentUrl())
-						scope.handler($event: event, $url: url)
+						scope.handler($el: element, $event: event, $url: url)
 				else
 					element.on 'click', handler
 
@@ -116,7 +116,7 @@ angular.module 'socialLinks', []
 		link: linker (scope, url) ->
 			"http://www.odnoklassniki.ru/dk?st.cmd=addShare&st._surl=#{encodeURIComponent(url)}"
 	]
-	
+
 	.directive 'socialXing', ['socialLinker', (linker) ->
 		restrict: 'ACEM',
 		scope: sharedScopeDefinition,

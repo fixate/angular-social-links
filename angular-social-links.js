@@ -33,6 +33,7 @@
               var url;
               url = urlFactory(scope, getCurrentUrl());
               return scope.handler({
+                $el: element,
                 $event: event,
                 $url: url
               });
