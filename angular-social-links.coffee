@@ -42,7 +42,9 @@ angular.module 'socialLinks', []
 				if attrs.customHandler?
 					element.on 'click', handler = (event) ->
 						url = urlFactory(scope, getCurrentUrl())
-						scope.handler($el: element, $event: event, $url: url)
+						# Set the href in case we want the default link behaviour
+						element.attr('href', url)
+						scope.handler($event: event, $url: url)
 				else
 					element.on 'click', handler
 

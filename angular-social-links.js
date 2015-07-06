@@ -32,8 +32,8 @@
             element.on('click', handler = function(event) {
               var url;
               url = urlFactory(scope, getCurrentUrl());
+              element.attr('href', url);
               return scope.handler({
-                $el: element,
                 $event: event,
                 $url: url
               });
