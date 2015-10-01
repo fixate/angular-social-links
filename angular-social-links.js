@@ -3,6 +3,8 @@
 
   sharedScopeDefinition = {
     handler: '&customHandler'
+    socialWidth: '@',
+    socialHeight: '@'
   };
 
   angular.module('socialLinks', []).factory('socialLinker', [
@@ -10,7 +12,7 @@
       return function(urlFactory) {
         return function(scope, element, attrs) {
           var getCurrentUrl, handler, popupWinAttrs;
-          popupWinAttrs = "status=no, width=" + (scope.socialWidth || 640) + ", height=" + (scope.socialWidth || 480) + ", resizable=yes, toolbar=no, menubar=no, scrollbars=no, location=no, directories=no";
+          popupWinAttrs = "status=no, width=" + (scope.socialWidth || 640) + ", height=" + (scope.socialHeight || 480) + ", resizable=yes, toolbar=no, menubar=no, scrollbars=no, location=no, directories=no";
           getCurrentUrl = function() {
             return attrs.customUrl || $location.absUrl();
           };

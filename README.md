@@ -52,6 +52,12 @@ and custom click handlers for all directives:
 <a social-twitter custom-handler="$event.preventDefault();controller.doSomething($url)">share on twitter</a>
 ```
 
+
+you could set custom width and height for window:
+```html
+<a social-twitter social-width="600" social-height="300">share on twitter</a>
+```
+
 You can use `$event` (click event object) and `$url` (the share link url).
 This will prevent the popup window from coming up. If you don't use `$event.preventDefault`, the link will navigate as usual.
 
