@@ -2,7 +2,7 @@
   var sharedScopeDefinition;
 
   sharedScopeDefinition = {
-    handler: '&customHandler'
+    handler: '&customHandler',
     socialWidth: '@',
     socialHeight: '@'
   };
