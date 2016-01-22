@@ -1,5 +1,7 @@
 sharedScopeDefinition = {
 	handler: '&customHandler'
+  socialWidth: '@'
+  socialHeight: '@'
 }
 
 angular.module 'socialLinks', []
