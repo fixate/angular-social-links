@@ -12,7 +12,7 @@ angular.module 'socialLinks', []
 				popupWinAttrs = "
 					status=no,
 					width=#{scope.socialWidth || 640},
-					height=#{scope.socialWidth || 480},
+					height=#{scope.socialHeight || 480},
 					resizable=yes,
 					toolbar=no,
 					menubar=no,
