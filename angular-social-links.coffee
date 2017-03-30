@@ -74,9 +74,11 @@ angular.module 'socialLinks', []
 
 	.directive 'socialGplus', ['socialLinker', (linker) ->
 		restrict: 'ACEM',
-		scope: sharedScopeDefinition,
+		scope: angular.extend(text: '@text', sharedScopeDefinition),
 		link: linker (scope, url) ->
-			"https://plus.google.com/share?url=#{encodeURIComponent(url)}"
+			shareUrl = ["https://plus.google.com/share?url=#{encodeURIComponent(url)}"]
+			if scope.text then shareUrl.push("text=#{encodeURIComponent(scope.text)}")
+			shareUrl.join('&')
 	]
 
 	.directive 'socialPinterest', ['socialLinker', (linker) ->
