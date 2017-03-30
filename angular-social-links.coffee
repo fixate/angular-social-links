@@ -97,9 +97,11 @@ angular.module 'socialLinks', []
 
 	.directive 'socialLinkedin', ['socialLinker', (linker) ->
 		restrict: 'ACEM',
-		scope: sharedScopeDefinition,
+		scope: angular.extend(title: '@title', sharedScopeDefinition),
 		link: linker (scope, url) ->
-			"https://linkedin.com/shareArticle?url=#{encodeURIComponent(url)}"
+			shareUrl = ["https://linkedin.com/shareArticle?url=#{encodeURIComponent(url)}"]
+			if scope.title then shareUrl.push("title=#{encodeURIComponent(scope.title)}")
+			shareUrl.join('&')
 	]
 
 	.directive 'socialReddit', ['socialLinker', (linker) ->
