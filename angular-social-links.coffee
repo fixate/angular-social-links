@@ -12,7 +12,7 @@ angular.module 'socialLinks', []
 				popupWinAttrs = "
 					status=no,
 					width=#{scope.socialWidth || 640},
-					height=#{scope.socialWidth || 480},
+					height=#{scope.socialHeight || 480},
 					resizable=yes,
 					toolbar=no,
 					menubar=no,
@@ -74,9 +74,11 @@ angular.module 'socialLinks', []
 
 	.directive 'socialGplus', ['socialLinker', (linker) ->
 		restrict: 'ACEM',
-		scope: sharedScopeDefinition,
+		scope: angular.extend(text: '@text', sharedScopeDefinition),
 		link: linker (scope, url) ->
-			"https://plus.google.com/share?url=#{encodeURIComponent(url)}"
+			shareUrl = ["https://plus.google.com/share?url=#{encodeURIComponent(url)}"]
+			if scope.text then shareUrl.push("text=#{encodeURIComponent(scope.text)}")
+			shareUrl.join('&')
 	]
 
 	.directive 'socialPinterest', ['socialLinker', (linker) ->
@@ -95,9 +97,11 @@ angular.module 'socialLinks', []
 
 	.directive 'socialLinkedin', ['socialLinker', (linker) ->
 		restrict: 'ACEM',
-		scope: sharedScopeDefinition,
+		scope: angular.extend(title: '@title', sharedScopeDefinition),
 		link: linker (scope, url) ->
-			"https://linkedin.com/shareArticle?url=#{encodeURIComponent(url)}"
+			shareUrl = ["https://linkedin.com/shareArticle?url=#{encodeURIComponent(url)}"]
+			if scope.title then shareUrl.push("title=#{encodeURIComponent(scope.title)}")
+			shareUrl.join('&')
 	]
 
 	.directive 'socialReddit', ['socialLinker', (linker) ->

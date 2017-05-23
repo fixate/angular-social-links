@@ -79,9 +79,16 @@
     'socialLinker', function(linker) {
       return {
         restrict: 'ACEM',
-        scope: sharedScopeDefinition,
+        scope: angular.extend({
+          text: '@text'
+        }, sharedScopeDefinition),
         link: linker(function(scope, url) {
-          return "https://plus.google.com/share?url=" + (encodeURIComponent(url));
+          var shareUrl;
+          shareUrl = ["https://plus.google.com/share?url=" + (encodeURIComponent(url))];
+          if (scope.text) {
+            shareUrl.push("text=" + (encodeURIComponent(scope.text)));
+          }
+          return shareUrl.join('&');
         })
       };
     }
@@ -112,9 +119,16 @@
     'socialLinker', function(linker) {
       return {
         restrict: 'ACEM',
-        scope: sharedScopeDefinition,
+        scope: angular.extend({
+          title: '@title'
+        }, sharedScopeDefinition),
         link: linker(function(scope, url) {
-          return "https://linkedin.com/shareArticle?url=" + (encodeURIComponent(url));
+          var shareUrl;
+          shareUrl = ["https://linkedin.com/shareArticle?url=" + (encodeURIComponent(url))];
+          if (scope.title) {
+            shareUrl.push("title=" + (encodeURIComponent(scope.title)));
+          }
+          return shareUrl.join('&');
         })
       };
     }
