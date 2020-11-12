@@ -2,6 +2,8 @@
 
 Flexible and easy social sharing directives for Twitter, Google Plus, Facebook, Pinterest, StumbleUpon, LinkedIn, and Reddit.
 
+**NOTE:** This module is for AngularJS only.
+
 ## Installation
 
 Bower:
